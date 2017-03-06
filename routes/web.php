@@ -23,3 +23,6 @@ Route::get('/share', function () {
 Route::get('/ping', function () {
     return ["alive" => true];
 });
+
+
+Route::get('/primeFactors', 'ApiController@prime');
