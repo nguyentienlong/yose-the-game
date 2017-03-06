@@ -19,7 +19,6 @@ Route::get('/share', function () {
     return view('share');
 });
 
-
 Route::get('/ping', function () {
     return ["alive" => true];
 });
@@ -31,3 +30,5 @@ Route::get('/astroport', function () {
 Route::get('/minesweeper', [
    'uses' => 'MineSweeperController@index'
 ]);
+
+Route::get('/primeFactors', 'PrimeFactorController@index');
