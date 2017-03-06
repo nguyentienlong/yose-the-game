@@ -18,18 +18,38 @@ class PrimeFactorController extends Controller
      */
     public function index(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'number' => 'numeric',
-        ]);
 
-        if ($validator->fails()) {
-            return ['number' => $request->input('number'), "error" => "not a number"];
+        $query  = explode('&', $_SERVER['QUERY_STRING']);
+        $params = [];
+
+        foreach( $query as $param )
+        {
+          list($name, $value) = explode('=', $param, 2);
+          $params[urldecode($name)][] = urldecode($value);
         }
 
-        $number = $request->input('number');
+        $numbers = $params['number'];
+        if (!is_array($numbers) || count($numbers) == 1){
+            return $this->calcPrimes($numbers);
+        }
+
+        $output = [];
+        foreach ($numbers as $number) {
+            $output[] = $this->calcPrimes($number);
+        }
+
+        return $output;
+    }
+
+    private function calcPrimes($number){
+        $original_number = $number;
+
+        if (!is_numeric($number)) {
+            return ['number' => $number, "error" => "not a number"];
+        }
 
         if ($number>1000000) {
-            return['number'=>$request->input('number'),"error"=>"too big number (>1e6)"];
+            return['number'=> $number,"error"=>"too big number (>1e6)"];
         }
 
         $decomposition = [];
@@ -42,6 +62,6 @@ class PrimeFactorController extends Controller
             }
         }
 
-        return ['number' => (int)$request->input('number'), "decomposition" => $decomposition];
+        return ['number' => $original_number, "decomposition" => $decomposition];
     }
 }
