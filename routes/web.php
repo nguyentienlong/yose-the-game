@@ -26,4 +26,4 @@ Route::get('/ping', function () {
 Route::get('/astroport', function () {
     return view('astroport/index');
 });
-Route::get('/primeFactors', 'MathController@prime');
+Route::get('/primeFactors', 'PrimeFactorController@index');

@@ -6,7 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MathController extends Controller
+class PrimeFactorController extends Controller
 {
     /**
      * Show the profile for the given user.
@@ -15,7 +15,7 @@ class MathController extends Controller
      * @param  int  $number
      * @return Response
      */
-    public function prime(Request $request)
+    public function index(Request $request)
     {
         $number = $request->input('number');
         $decomposition = [];
