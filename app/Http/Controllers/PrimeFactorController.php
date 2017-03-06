@@ -28,10 +28,13 @@ class PrimeFactorController extends Controller
 
         $number = $request->input('number');
         $decomposition = [];
-
-        while ($number / 2 >= 1 && $number % 2 == 0) {
-            $number = $number / 2;
-            $decomposition[] = 2;
+        
+        for ($candidate = 2; $number > 1; $candidate++)
+        {
+            for (; $number % $candidate == 0; $number /= $candidate)
+            {
+                $decomposition[] = $candidate;
+            }
         }
 
         return ['number' => (int)$request->input('number'), "decomposition" => $decomposition];
