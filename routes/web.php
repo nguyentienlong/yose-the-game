@@ -19,7 +19,6 @@ Route::get('/share', function () {
     return view('share');
 });
 
-
 Route::get('/ping', function () {
     return ["alive" => true];
 });
@@ -27,3 +26,4 @@ Route::get('/ping', function () {
 Route::get('/astroport', function () {
     return view('astroport/index');
 });
+Route::get('/primeFactors', 'PrimeFactorController@index');
