@@ -83,7 +83,7 @@
                 </div>
 
                 <div>
-                    <p>Please click <a href="https://bitbucket.org/guiburi/yose-theme">here</a> to visit our source code repository.</p>
+                    <p>Please click <a id="repository-link" href="{{ url('/share') }}">here</a> to visit our source code repository.</p>
                 </div>
 
             </div>
