@@ -82,7 +82,7 @@
                     Hello Yose
                 </div>
                 <div class="links">
-                    <a href="#">contact-me</a>
+                    <a id="contact-me-link" href="#">contact-me</a>
                     <br/>
                     <p>Please click <a id="repository-link" href="{{ url('/share') }}">here</a> to visit our source code repository.</p>
                 </div>
