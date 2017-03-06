@@ -19,10 +19,8 @@ Route::get('/share', function () {
     return view('share');
 });
 
-
 Route::get('/ping', function () {
     return ["alive" => true];
 });
 
-
-Route::get('/primeFactors', 'ApiController@prime');
+Route::get('/primeFactors', 'MathController@prime');
