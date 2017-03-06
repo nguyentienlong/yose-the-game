@@ -19,11 +19,7 @@
             </div>
 
             <div class="links">
-                <a href="https://laravel.com/docs">Documentation</a>
-                <a href="https://laracasts.com">Laracasts</a>
-                <a href="https://laravel-news.com">News</a>
-                <a href="https://forge.laravel.com">Forge</a>
-                <a href="https://github.com/laravel/laravel">GitHub</a>
+                <a id="contact-me-link" href="#">contact-me</a>
             </div>
             <div>
                 <p>Please click <a id="repository-link" href="{{ url('/share') }}">here</a> to visit our source code
