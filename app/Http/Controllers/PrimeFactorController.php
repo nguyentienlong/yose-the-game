@@ -26,11 +26,12 @@ class PrimeFactorController extends Controller
             return ['number' => $request->input('number'), "error" => "not a number"];
         }
 
+        $number = $request->input('number');
+
         if (number>1000000) {
             return['number'=>$request->input('number'),"error"=>"toobignumber(>1e6)"];
         }
 
-        $number = $request->input('number');
         $decomposition = [];
         
         for ($candidate = 2; $number > 1; $candidate++)
