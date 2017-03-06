@@ -1,7 +1,8 @@
 clone
 `git clone git@bitbucket.org:guiburi/yose-theme.git`
 
-copy `.env.example` to `.env`
+Run this cmd to copy .env.example into .env
+`cp .env.example .env`
 
 run `php artisan --no-ansi key:generate`
 
