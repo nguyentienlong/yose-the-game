@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/share', function () {
+    return view('share');
+});
+
+
 Route::get('/ping', function () {
     return ["alive" => true];
 });

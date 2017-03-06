@@ -1,3 +1,5 @@
+# YoseTheGame - ThemeTeam
+
 clone
 `git clone git@bitbucket.org:guiburi/yose-theme.git`
 
