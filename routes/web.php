@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    $sdfads =' asdfad ';
+    return view('index',compact('sdfads'));
 });
 
 Route::get('/share', function () {
