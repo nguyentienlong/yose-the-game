@@ -20,7 +20,7 @@
 
             <div class="links">
                 <a id="contact-me-link" href="#">contact-me</a>
-                <a id="ping-challenge-link" href="#">ping-challenge</a>
+                <a id="ping-challenge-link" href="{{ url('/ping') }}">ping-challenge</a>
             </div>
             <div>
                 <p>Please click <a id="repository-link" href="{{ url('/share') }}">here</a> to visit our source code
