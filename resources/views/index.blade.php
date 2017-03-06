@@ -25,6 +25,10 @@
                 <a href="https://forge.laravel.com">Forge</a>
                 <a href="https://github.com/laravel/laravel">GitHub</a>
             </div>
+            <div>
+                <p>Please click <a id="repository-link" href="{{ url('/share') }}">here</a> to visit our source code
+                    repository.</p>
+            </div>
         </div>
     </div>
 @endsection
