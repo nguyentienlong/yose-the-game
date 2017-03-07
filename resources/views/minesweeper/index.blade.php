@@ -11,20 +11,10 @@
             height: 50px;
         }
     </style>
-    <h3 id="title">Minesweeper</h3>
+    <h3 id="title" style="text-align:center;">Minesweeper</h3>
     <div class="flex-center position-ref full-height">
-        <div class="clearfix"></div>
         <div class="content">
             <div id="minesweeper-board" class="">
-                @for ($row = 0; $row < count($minesMatrix); $row++)
-                <div class="container" id="row-{{ $row+1 }}">
-                    @for ($col = 0; $col < count($minesMatrix[$row]); $col++)
-                    <div class="col-md-1 mine" id="cell-{{ $row + 1 }}x{{ $col + 1 }}"
-                        data-id = "[{{ $row }}][{{ $col }}]"
-                        data-value="{{ $minesMatrix[$row][$col] }}"></div>
-                    @endfor
-                </div>
-                @endfor
             </div>
         </div>
     </div>
@@ -41,12 +31,39 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <script>
-        $('.mine').on('click', function () {
+        $(document).ready(function() {
+            load();
+        });
+
+        $(document).on('click', '.mine' , function () {
             var item = $(this).attr('data-value');
 
-            if (item == 'bomb') {                
-                $(this).css('background-color', 'red');
+            if (item == '1') {
+                $(this).css('background-color', '#51e1f7');
             }
         })
+
+        var load = function () {
+            $.ajax({
+                method: 'GET',
+                url: "{{ url('/minesweeper/load') }}"
+            }).done(function(response) {
+                fillMineMatrix(response);
+            })
+        }
+
+        var fillMineMatrix = function(response) {
+            var html = '';
+            for (var row = 0; row < response.length; row++) {
+                html += '<div id="row-'+ (row+1)  +'">';
+                for (var col = 0; col < response[row].length; col++) {
+                    html += '<div class="col-md-1 mine" id="cell-'+ (row + 1) + 'x' + (col + 1) + '"' +
+                        'data-value="' + response[row][col] +'"></div>';
+                }
+                html += '</div>';
+            }
+
+            $('#minesweeper-board').html(html);
+        }
     </script>
 @endsection
