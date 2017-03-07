@@ -36,3 +36,7 @@ Route::get('/primeFactors', 'PrimeFactorController@index');
 Route::get('/contact', function () {
     return view('contact/index');
 });
+
+Route::get('/primeFactors/ui', function () {
+    return view('primeFactors/index');
+});
