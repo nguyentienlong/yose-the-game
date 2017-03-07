@@ -7,7 +7,14 @@
     function getDecompostion(){
         $.ajax({url: "/primeFactors?number="+$('#number').val(), success: function(result){
                 if( 'decomposition' in result){
-                    $('#result').html( result['decomposition'] );
+                    decomposition = $('#number').val() +" = ";
+                    for (var i = 0; i < result['decomposition'].length; i++) {
+                        decomposition += result['decomposition'][i];
+                        if (i != result['decomposition'].length-1) {
+                            decomposition += ' x ';
+                        }
+                    }
+                    $('#result').html(decomposition);
                 }else if( 'error' in result){
                     $('#result').html( 'error:' + result['error'] );
                 }else{
