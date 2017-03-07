@@ -24,8 +24,10 @@ Route::get('/ping', function () {
 });
 
 Route::get('/astroport', function () {
-    return view('astroport/index');
+    return view('astroport/index', ['data' => []]);
 });
+
+Route::post('/astroport', 'AstroportController@store');
 
 Route::get('/minesweeper', [
    'uses' => 'MineSweeperController@index'
