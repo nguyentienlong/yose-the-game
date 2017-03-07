@@ -27,7 +27,7 @@ Route::get('/astroport', function () {
     return view('astroport/index', ['data' => []]);
 });
 
-Route::post('/astroport', 'AstroportController@astroportSubmit');
+Route::post('/astroport', 'AstroportController@store');
 
 Route::get('/minesweeper', [
    'uses' => 'MineSweeperController@index'

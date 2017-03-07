@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class AstroportController extends Controller
 {
-    public function astroportSubmit(Request $request)
+    public function store(Request $request)
     {
         $data = $request->all();
 
