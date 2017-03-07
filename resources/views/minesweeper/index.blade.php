@@ -16,10 +16,12 @@
         <div class="clearfix"></div>
         <div class="content">
             <div id="minesweeper-board" class="">
-                @for ($i = 1; $i <= 8; $i++)
-                <div class="container" id="row-{{$i}}">
-                    @for ($j = 1; $j <= 8; $j++)
-                    <div class="col-md-1" id="cell-{{$i}}x{{$j}}"></div>
+                @for ($row = 0; $row < count($minesMatrix); $row++)
+                <div class="container" id="row-{{ $row+1 }}">
+                    @for ($col = 0; $col < count($minesMatrix[$row]); $col++)
+                    <div class="col-md-1 mine" id="cell-{{ $row + 1 }}x{{ $col + 1 }}"
+                        data-id = "[{{ $row }}][{{ $col }}]"
+                        data-value="{{ $minesMatrix[$row][$col] }}"></div>
                     @endfor
                 </div>
                 @endfor
@@ -37,4 +39,14 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+        $('.mine').on('click', function () {
+            var item = $(this).attr('data-value');
+
+            if (item == 'bomb') {                
+                $(this).css('background-color', 'red');
+            }
+        })
+    </script>
 @endsection
