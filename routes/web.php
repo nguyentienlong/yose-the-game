@@ -24,7 +24,7 @@ Route::get('/ping', function () {
 });
 
 Route::get('/astroport', function () {
-    return view('astroport/index');
+    return view('astroport.index');
 });
 
 Route::get('/minesweeper', [
@@ -32,6 +32,9 @@ Route::get('/minesweeper', [
 ]);
 
 Route::get('/primeFactors', 'PrimeFactorController@index');
+
 Route::get('/primeFactors/ui', function () {
-    return view('primeFactors/index');
+    return view('primeFactors.index');
 });
+
+Route::get('/fire/geek','GeekController@index');
