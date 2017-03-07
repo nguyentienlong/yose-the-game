@@ -18,7 +18,6 @@ class PrimeFactorController extends Controller
      */
     public function index(Request $request)
     {
-
         $query  = explode('&', $_SERVER['QUERY_STRING']);
         $params = [];
 
@@ -29,8 +28,8 @@ class PrimeFactorController extends Controller
         }
 
         $numbers = $params['number'];
-        if (!is_array($numbers) || count($numbers) == 1){
-            return $this->calcPrimes($numbers);
+        if (count($numbers) == 1){
+            return $this->calcPrimes($numbers[0]);
         }
 
         $output = [];
