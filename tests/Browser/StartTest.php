@@ -13,11 +13,18 @@ class ExampleTest extends DuskTestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testFirstPage()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                     ->assertSee('Hello Yose');
+        });
+    }
+    public function testFirstWebService()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/ping')
+                ->waitforText('{"alive":true}');
         });
     }
 }
