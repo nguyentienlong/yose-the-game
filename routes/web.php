@@ -27,4 +27,9 @@ Route::get('/ping', function () {
 Route::get('/astroport', function () {
     return view('astroport/index');
 });
+
+Route::get('/minesweeper', [
+   'uses' => 'MineSweeperController@index'
+]);
+
 Route::get('/primeFactors', 'PrimeFactorController@index');
