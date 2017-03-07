@@ -32,3 +32,6 @@ Route::get('/minesweeper', [
 ]);
 
 Route::get('/primeFactors', 'PrimeFactorController@index');
+Route::get('/primeFactors/ui', function () {
+    return view('primeFactors/index');
+});
