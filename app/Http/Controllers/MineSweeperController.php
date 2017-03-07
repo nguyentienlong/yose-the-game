@@ -12,6 +12,9 @@ class MineSweeperController extends Controller
      */
     public function index(Request $request)
     {
-        return view('minesweeper/index');
+        $minesMatrix = config('minesweeper.minesMatrix');
+
+        return view('minesweeper/index', compact('minesMatrix'));
     }
+
 }
