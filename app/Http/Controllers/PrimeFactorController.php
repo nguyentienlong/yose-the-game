@@ -34,7 +34,7 @@ class PrimeFactorController extends Controller
                 return $this->calcPrimes($numbers[0]);
             }else{
                 $numbers = explode(', ', $numbers[0]);
-                $output = '<ol>';
+                $output = '<ol id="results">';
                 foreach ($numbers as $number) {
                     $result = $this->calcPrimes($number);
                     if( !empty($result['error']) ){
