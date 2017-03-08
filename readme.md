@@ -1,6 +1,6 @@
 # YoseTheGame - http://yosethegame.com/
 
-demo: https://longka-yose-the-game.herokuapp.com/
+demo: http://longka-yose-the-game.herokuapp.com/
 
 clone
 `git clone https://github.com/nguyentienlong/yose-the-game.git`
