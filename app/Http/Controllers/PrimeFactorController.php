@@ -51,6 +51,10 @@ class PrimeFactorController extends Controller
             return['number'=> $number,"error"=>"too big number (>1e6)"];
         }
 
+        if ($number<0) {
+            return['number'=> $number,"error"=>$number." is not an integer > 1"];
+        }
+
         $decomposition = [];
         
         for ($candidate = 2; $number > 1; $candidate++)
