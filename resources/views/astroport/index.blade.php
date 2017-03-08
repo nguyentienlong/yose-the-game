@@ -30,10 +30,10 @@
                 <div id="gate-1" class="{{ $data['occupied'] ? 'occupied' : 'free' }}">
                     <div id="ship-1">{{ isset($data['shipName']) ? $data['shipName'] : 'Ship 1' }}</div>
                 </div>
-                <div id="gate-2">
+                <div id="gate-2" class="free">
                     <div id="ship-2">Ship 2</div>
                 </div>
-                <div id="gate-3">
+                <div id="gate-3" class="free">
                     <div id="ship-3">Ship 3</div>
                 </div>
             </div>
