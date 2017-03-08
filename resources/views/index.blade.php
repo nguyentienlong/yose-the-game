@@ -21,10 +21,6 @@
             <div class="links">
                 <a id="contact-me-link" href="{{ secure_url('/minesweeper') }}">Minesweeper</a>
             </div>
-            <div>
-                <p>Please click <a id="repository-link" href="{{ url('/share') }}">here</a> to visit our source code
-                    repository.</p>
-            </div>
         </div>
     </div>
 @endsection
