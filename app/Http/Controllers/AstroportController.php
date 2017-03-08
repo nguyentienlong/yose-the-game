@@ -14,6 +14,9 @@ class AstroportController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        if (isset($data['shipName']) && !empty($data['shipName'])) {
+            $data['occupied'] = true;
+        }
 
         return view('astroport/index', [
             'data' => $data,

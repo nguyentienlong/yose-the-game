@@ -15,6 +15,15 @@
     <div class="flex-center position-ref full-height">
         <div class="content">
             <div id="minesweeper-board" class="">
+                @for ($row = 0; $row < count($mineMatrix); $row++)
+               <div class="container" id="row-{{ $row+1 }}">
+                   @for ($col = 0; $col < count($mineMatrix[$row]); $col++)
+                   <div class="col-md-1 mine" id="cell-{{ $row + 1 }}x{{ $col + 1 }}"
+                       data-id = "[{{ $row }}][{{ $col }}]"
+                       data-value="{{ $mineMatrix[$row][$col] }}"></div>
+                   @endfor
+               </div>
+               @endfor
             </div>
         </div>
     </div>
@@ -39,11 +48,12 @@
             var item = $(this).attr('data-value');
 
             if (item == '1') {
-                $(this).css('background-color', '#51e1f7');
+                $(this).css('background-color', 'red');
+                $(this).addClass('lost');
             }
         })
 
-        var load = function () {
+        function load() {
             $.ajax({
                 method: 'GET',
                 url: "{{ url('/minesweeper/load') }}"
