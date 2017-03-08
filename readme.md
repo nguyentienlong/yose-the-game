@@ -1,6 +1,13 @@
-# YoseTheGame - http://yosethegame.com/
+# Minesweeper
+---
+reference: YoseTheGame - http://yosethegame.com/
 
-demo: http://longka-yose-the-game.herokuapp.com/
+fork from: https://bitbucket.org/guiburi/yose-theme
+
+demo for minesweeper: http://longka-yose-the-game.herokuapp.com/minesweeper
+
+---
+Play with the code
 
 clone
 `git clone https://github.com/nguyentienlong/yose-the-game.git`
