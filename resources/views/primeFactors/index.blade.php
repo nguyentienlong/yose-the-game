@@ -6,7 +6,10 @@
     <script type="text/javascript">
     function getDecompostion(){
         $.ajax({url: "/primeFactors?number="+$('#number').val(), success: function(result){
-                if( 'decomposition' in result){
+
+                if( typeof result === 'string' ){
+                    $('#result').html( result );
+                }else if( 'decomposition' in result){
                     decomposition = $('#number').val() +" = ";
                     for (var i = 0; i < result['decomposition'].length; i++) {
                         decomposition += result['decomposition'][i];
