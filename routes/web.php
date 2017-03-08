@@ -33,6 +33,10 @@ Route::get('/minesweeper', [
    'uses' => 'MineSweeperController@index'
 ]);
 
+Route::get('/minesweeper/load', [
+    'uses' => 'MineSweeperController@load',
+]);
+
 Route::get('/primeFactors', 'PrimeFactorController@index');
 
 Route::get('/contact', function () {

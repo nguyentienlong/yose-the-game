@@ -1,14 +1,5 @@
 <?php
 
 return [
-    'minesMatrix' => [
-        ['bomb', 'empty', 'empty', 'empty', 'empty','empty', 'empty', 'empty'],
-        ['empty', 'empty', 'empty', 'empty', 'empty','empty', 'empty', 'empty'],
-        ['empty', 'empty', 'empty', 'empty', 'empty','empty', 'empty', 'empty'],
-        ['empty', 'empty', 'empty', 'empty', 'empty','empty', 'empty', 'empty'],
-        ['empty', 'empty', 'empty', 'empty', 'empty','empty', 'empty', 'empty'],
-        ['empty', 'empty', 'empty', 'empty', 'empty','empty', 'empty', 'empty'],
-        ['empty', 'empty', 'empty', 'empty', 'empty','empty', 'empty', 'empty'],
-        ['empty', 'empty', 'empty', 'empty', 'empty','empty', 'empty', 'bomb'],
-    ]
+    'size' => 8,
 ];
