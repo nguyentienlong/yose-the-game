@@ -85,11 +85,6 @@ class GeekController extends Controller
 
             }
         }
-
-
-        dd($moves);
-
-
-        dd(request()->all());
+        return [["map" => $map],['moves' => $moves]];
     }
 }
