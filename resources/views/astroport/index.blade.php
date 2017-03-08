@@ -18,8 +18,16 @@
                 <button type="submit" id="dock">Dock</button>
             </form>
 
+            <script>
+                $('document').ready(function () {
+                    $('body').on('keyup', '#ship', function() {
+                        $('#info').addClass('hidden');
+                    })
+                });
+            </script>
+
             <div class="links">
-                <div id="gate-1" class="free {{ isset($data['shipName']) ? $data['shipName'] : 'occupied' }}">
+                <div id="gate-1" class="free {{ $data['occupied'] ? '' : 'occupied' }}">
                     <div id="ship-1">{{ isset($data['shipName']) ? $data['shipName'] : 'Ship 1' }}</div>
                 </div>
                 <div id="gate-2">
@@ -32,8 +40,8 @@
 
             <hr/>
             <h3>Info</h3>
-            <div id="info" class="hidden this-is-info">
-
+            <div id="info" class="{{ $data['occupied'] ? '' : 'hidden' }} this-is-info">
+                First ship is docked
             </div>
         </div>
     </div>
