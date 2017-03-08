@@ -16,7 +16,11 @@
                     }
                     $('#result').html(decomposition);
                 }else if( 'error' in result){
-                    $('#result').html( result['error'] );
+                    if( result['error'] == "not a number" ){
+                        $('#result').html( $('#number').val() + ' is not a number' );
+                    }else{
+                        $('#result').html( result['error'] );
+                    }
                 }else{
                     $('#result').html( 'unkown error' );
                 }
