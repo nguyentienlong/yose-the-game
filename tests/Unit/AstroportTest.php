@@ -45,6 +45,23 @@ class AstroportTest extends TestCase
         $this->assertEquals('titanic', $ship1->textContent);
     }
 
+    public function testAstroportFeedback() {
+        $response = $this->get('/astroport');
+        $gate1 = $this->findElementById($response, 'gate-1');
+        $info = $this->findElementById($response, 'info');
+        $this->assertNotNull($gate1);
+        $this->assertNotNull($info);
+        $this->assertContains('free', $gate1->getAttribute('class'));
+        $this->assertContains('hidden', $info->getAttribute('class'));
+        ///////////////////////////////////////////
+        $response = $this->post('/astroport?shipName=titanic');
+        $gate1 = $this->findElementById($response, 'gate-1');
+        $info = $this->findElementById($response, 'info');
+        $this->assertContains('occupied', $gate1->getAttribute('class'));
+        $this->assertNotContains('hidden', $info->getAttribute('class'));
+
+    }
+
     private function findElementById($response, $id)
     {
         $html = $response->getContent();
