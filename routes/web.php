@@ -23,9 +23,7 @@ Route::get('/ping', function () {
     return ["alive" => true];
 });
 
-Route::get('/astroport', function () {
-    return view('astroport/index', ['data' => []]);
-});
+Route::get('/astroport', 'AstroportController@index');
 
 Route::post('/astroport', 'AstroportController@store');
 
