@@ -1,7 +1,9 @@
-# YoseTheGame - ThemeTeam
+# YoseTheGame - http://yosethegame.com/
+
+demo: https://longka-yose-the-game.herokuapp.com/
 
 clone
-`git clone git@bitbucket.org:guiburi/yose-theme.git`
+`git clone https://github.com/nguyentienlong/yose-the-game.git`
 
 Run this cmd to copy .env.example into .env
 `cp .env.example .env`
