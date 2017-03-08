@@ -22,10 +22,10 @@ class FireTest extends TestCase
                 'P..',
                 '.WF',
             ],
-            "moves" => [
+            'moves' => [
                 ['dx' => 1,'dy'=>0],
                 ['dx' => 0,'dy'=>1],
-                ['dx' => 0,'dy'=>1],
+                ['dx' => 1,'dy'=>0],
             ]
         ]);
     }

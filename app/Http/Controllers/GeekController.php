@@ -85,6 +85,9 @@ class GeekController extends Controller
 
             }
         }
-        return [["map" => $map],['moves' => $moves]];
+        return [
+            "map" => $map,
+            'moves' => $moves
+        ];
     }
 }
