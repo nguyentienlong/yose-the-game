@@ -19,9 +19,7 @@
             </div>
 
             <div class="links">
-                <a id="contact-me-link" href="{{ secure_url('/contact') }}">contact-me</a>
-                <a id="ping-challenge-link" href="{{ secure_url('/ping') }}">ping-challenge</a>
-
+                <a id="contact-me-link" href="{{ secure_url('/minesweeper') }}">Minesweeper</a>
             </div>
             <div>
                 <p>Please click <a id="repository-link" href="{{ url('/share') }}">here</a> to visit our source code
@@ -30,4 +28,3 @@
         </div>
     </div>
 @endsection
-

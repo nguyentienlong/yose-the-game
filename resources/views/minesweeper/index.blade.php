@@ -40,9 +40,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <script>
-        $(document).ready(function() {
-            load();
-        });
+        var mineMatrix = [];
 
         $(document).on('click', '.mine' , function () {
             var item = $(this).attr('data-value');
@@ -52,7 +50,10 @@
                 $(this).css('background-color', 'red');
             } else {
                 $(this).addClass('safe');
-                $(this).text('1');
+
+                count = checkBombAround(this);
+
+                $(this).text(count);
             }
         })
 
@@ -65,8 +66,31 @@
             })
         }
 
-        var fillMineMatrix = function(response) {
+        function checkBombAround (cell) {
+            var id = $(cell).attr('id').replace('cell-','');
+            var row = parseInt(id.substr(0,1)) - 1;
+            var col = parseInt(id.substr(2,1)) - 1;
+
+            var count = 0;
+
+            console.log(col);
+
+            for (i=-1; i <= 1; i++) {
+                for (j=-1; j <= 1; j++) {
+                    if ( row+i >= 0 && row+i < 8 && col+j >=0 && col+j < 8 && this.mineMatrix[row+i][col+j] == 1) {
+                        count++;
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        function fillMineMatrix (response) {
+            this.mineMatrix = response;
+
             var html = '';
+
             for (var row = 0; row < response.length; row++) {
                 html += '<div id="row-'+ (row+1)  +'">';
                 for (var col = 0; col < response[row].length; col++) {
@@ -78,5 +102,11 @@
 
             $('#minesweeper-board').html(html);
         }
+
+        $(document).ready(function() {
+            load();
+        });
+
+
     </script>
 @endsection
