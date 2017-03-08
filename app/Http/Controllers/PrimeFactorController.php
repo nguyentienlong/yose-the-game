@@ -65,7 +65,7 @@ class PrimeFactorController extends Controller
             if( $number > 0 && $number < 400 ){
                 $roman = true;
             }else{
-                return ['number' => $number, "error" => "not a number"];
+                return ['number' => $original_number, "error" => "not a number"];
             }
         }
 
