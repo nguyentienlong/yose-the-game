@@ -59,12 +59,14 @@ class AstroportTest extends TestCase
         $this->assertContains('free', $gate2->getAttribute('class'));
         $this->assertContains('free', $gate3->getAttribute('class'));
         $this->assertContains('hidden', $info->getAttribute('class'));
-        ///////////////////////////////////////////
+        $this->assertNotContains('visible', $info->getAttribute('class'));
+        // post
         $response = $this->post('/astroport?shipName=titanic');
         $gate1 = $this->findElementById($response, 'gate-1');
         $info = $this->findElementById($response, 'info');
         $this->assertContains('occupied', $gate1->getAttribute('class'));
         $this->assertNotContains('hidden', $info->getAttribute('class'));
+        $this->assertContains('visible', $info->getAttribute('class'));
 
     }
 
