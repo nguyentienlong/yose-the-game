@@ -26,14 +26,67 @@ class GeekController extends Controller
         $wpx = $waterPositionX - $planePositionX;
         if ($wpx != 0) {
             for ($i = 0; $i < abs($wpx); $i++) {
-                if ($wpx < 0 ) {
-                    $moves[] = ['dx' => -1, 'dy' => 0];
+                if ($wpx < 0) {
+                    if ($planePositionX - 1 !== $firePositionX && $planePositionY !== $firePositionY) {
+                        $moves[] = ['dx' => -1, 'dy' => 0];
+                    }
                 } else {
-                    $moves[] = ['dx' => 1, 'dy' => 0];
+                    if ($planePositionX + 1 !== $firePositionX && $planePositionY !== $firePositionY) {
+                        $moves[] = ['dx' => 1, 'dy' => 0];
+                    }
                 }
 
             }
         }
+        $wpy = $waterPositionY - $planePositionY;
+        if ($wpy != 0) {
+            for ($i = 0; $i < abs($wpy); $i++) {
+                if ($wpx < 0) {
+                    if ($planePositionY - 1 !== $firePositionY && $planePositionX !== $firePositionX) {
+                        $moves[] = ['dx' => 0, 'dy' => -1];
+                    }
+                } else {
+                    if ($planePositionX + 1 !== $firePositionX && $planePositionY !== $firePositionY) {
+                        $moves[] = ['dx' => 0, 'dy' => 1];
+                    }
+                }
+
+            }
+        }
+
+        $wfx = $waterPositionX - $firePositionX;
+        if ($wpx != 0) {
+            for ($i = 0; $i < abs($wpx); $i++) {
+                if ($wpx < 0) {
+                    if ($firePositionX - 1 !== $waterPositionX && $firePositionX !== $waterPositionX) {
+                        $moves[] = ['dx' => -1, 'dy' => 0];
+                    }
+                } else {
+                    if ($firePositionX + 1 !== $waterPositionX && $firePositionX !== $waterPositionX) {
+                        $moves[] = ['dx' => 1, 'dy' => 0];
+                    }
+                }
+
+            }
+        }
+
+        $wfy = $waterPositionY - $firePositionY;
+        if ($wpy != 0) {
+            for ($i = 0; $i < abs($wpy); $i++) {
+                if ($wpx < 0) {
+                    if ($firePositionY - 1 !== $waterPositionY && $firePositionY !== $waterPositionY) {
+                        $moves[] = ['dx' => 0, 'dy' => -1];
+                    }
+                } else {
+                    if ($firePositionY + 1 !== $waterPositionY && $firePositionY !== $waterPositionY) {
+                        $moves[] = ['dx' => 0, 'dy' => 1];
+                    }
+                }
+
+            }
+        }
+
+
         dd($moves);
 
 
