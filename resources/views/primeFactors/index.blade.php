@@ -16,7 +16,7 @@
                     }
                     $('#result').html(decomposition);
                 }else if( 'error' in result){
-                    $('#result').html( 'error:' + result['error'] );
+                    $('#result').html( result['error'] );
                 }else{
                     $('#result').html( 'unkown error' );
                 }
