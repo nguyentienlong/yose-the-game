@@ -19,14 +19,14 @@ class GeekController extends Controller
 
         $firePositionX = strpos($map, 'F') % $width;
         $firePositionY = (int)floor(strpos($map, 'F') / $width);
-
+        $hasWater = false;
         $map = str_split($map, $width);
 
         $moves = [];
         $wpx = $waterPositionX - $planePositionX;
         if ($wpx != 0) {
             for ($i = 0; $i < abs($wpx); $i++) {
-                if ($wpx < 0) {
+                if ($wpx < 0 ) {
                     $moves[] = ['dx' => -1, 'dy' => 0];
                 } else {
                     $moves[] = ['dx' => 1, 'dy' => 0];
