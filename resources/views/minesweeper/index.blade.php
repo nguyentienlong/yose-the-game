@@ -11,18 +11,19 @@
             height: 50px;
         }
     </style>
-    <h3 id="title">Minesweeper</h3>
+    <h3 id="title" style="text-align:center;">Minesweeper</h3>
     <div class="flex-center position-ref full-height">
-        <div class="clearfix"></div>
         <div class="content">
             <div id="minesweeper-board" class="">
-                @for ($i = 1; $i <= 8; $i++)
-                <div class="container" id="row-{{$i}}">
-                    @for ($j = 1; $j <= 8; $j++)
-                    <div class="col-md-1" id="cell-{{$i}}x{{$j}}"></div>
-                    @endfor
-                </div>
-                @endfor
+                @for ($row = 0; $row < count($mineMatrix); $row++)
+               <div class="container" id="row-{{ $row+1 }}">
+                   @for ($col = 0; $col < count($mineMatrix[$row]); $col++)
+                   <div class="col-md-1 mine" id="cell-{{ $row + 1 }}x{{ $col + 1 }}"
+                       data-id = "[{{ $row }}][{{ $col }}]"
+                       data-value="{{ $mineMatrix[$row][$col] }}"></div>
+                   @endfor
+               </div>
+               @endfor
             </div>
         </div>
     </div>
@@ -37,4 +38,45 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            load();
+        });
+
+        $(document).on('click', '.mine' , function () {
+            var item = $(this).attr('data-value');
+
+            if (item == '1') {
+                $(this).addClass('lost');
+                $(this).css('background-color', 'red');
+            } else {
+                $(this).addClass('safe');
+                $(this).text('1');
+            }
+        })
+
+        function load() {
+            $.ajax({
+                method: 'GET',
+                url: "{{ url('/minesweeper/load') }}"
+            }).done(function(response) {
+                fillMineMatrix(response);
+            })
+        }
+
+        var fillMineMatrix = function(response) {
+            var html = '';
+            for (var row = 0; row < response.length; row++) {
+                html += '<div id="row-'+ (row+1)  +'">';
+                for (var col = 0; col < response[row].length; col++) {
+                    html += '<div class="col-md-1 mine" id="cell-'+ (row + 1) + 'x' + (col + 1) + '"' +
+                        'data-value="' + response[row][col] +'"></div>';
+                }
+                html += '</div>';
+            }
+
+            $('#minesweeper-board').html(html);
+        }
+    </script>
 @endsection

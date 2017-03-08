@@ -19,7 +19,7 @@
             </div>
 
             <div class="links">
-                <a id="contact-me-link" href="#">contact-me</a>
+                <a id="contact-me-link" href="{{ secure_url('/contact') }}">contact-me</a>
                 <a id="ping-challenge-link" href="{{ secure_url('/ping') }}">ping-challenge</a>
 
             </div>

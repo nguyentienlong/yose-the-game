@@ -23,18 +23,29 @@ Route::get('/ping', function () {
     return ["alive" => true];
 });
 
-Route::get('/astroport', function () {
-    return view('astroport.index');
+Route::get('/contact', function () {
+    return view('contact/index');
 });
 
+Route::get('/astroport', 'AstroportController@index');
+Route::post('/astroport', 'AstroportController@store');
+
 Route::get('/minesweeper', [
-   'uses' => 'MineSweeperController@index'
+    'uses' => 'MineSweeperController@index'
+]);
+Route::get('/minesweeper/load', [
+    'uses' => 'MineSweeperController@load',
 ]);
 
 Route::get('/primeFactors', 'PrimeFactorController@index');
-
 Route::get('/primeFactors/ui', function () {
     return view('primeFactors.index');
 });
+Route::get('/primeFactors/ui', function () {
+    return view('primeFactors/index');
+});
 
-Route::get('/fire/geek','GeekController@index');
+Route::get('/fire/geek', 'GeekController@index');
+
+
+
