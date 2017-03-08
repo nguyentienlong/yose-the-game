@@ -19,7 +19,7 @@
             </div>
 
             <div class="links">
-                <a id="contact-me-link" href="{{ secure_url('/minesweeper') }}">Minesweeper</a>
+                <a id="contact-me-link" href="{{ url('/minesweeper') }}">Minesweeper</a>
             </div>
         </div>
     </div>
