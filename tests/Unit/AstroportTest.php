@@ -30,6 +30,21 @@ class AstroportTest extends TestCase
         $this->assertEquals('ship-3', $gate3->getElementsByTagName('div')->item(0)->getAttribute('id'));
     }
 
+    public function testAstroportDocker()
+    {
+        $response = $this->get('/astroport');
+        $input = $this->findElementById($response, 'ship');
+        $submit = $this->findElementById($response, 'dock');
+
+        $this->assertNotNull($input);
+        $this->assertNotNull($submit);
+
+        $response = $this->post('/astroport?shipName=titanic');
+        $gate1 = $this->findElementById($response, 'gate-1');
+        $ship1 = $gate1->getElementsByTagName('div')->item(0);
+        $this->assertEquals('titanic', $ship1->textContent);
+    }
+
     private function findElementById($response, $id)
     {
         $html = $response->getContent();
