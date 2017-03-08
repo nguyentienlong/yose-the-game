@@ -12,18 +12,30 @@ class GeekController extends Controller
         $map = $request->get('map');
 
         $planePositionX = strpos($map, 'P') % $width;
-        $planePositionY = (int)ceil(strpos($map, 'P') / $width);
+        $planePositionY = (int)floor(strpos($map, 'P') / $width);
 
         $waterPositionX = strpos($map, 'W') % $width;
-        $waterPositionY = (int)ceil(strpos($map, 'W') / $width);
+        $waterPositionY = (int)floor(strpos($map, 'W') / $width);
 
         $firePositionX = strpos($map, 'F') % $width;
-        $firePositionY = (int)ceil(strpos($map, 'F') / $width);
+        $firePositionY = (int)floor(strpos($map, 'F') / $width);
 
+        $map = str_split($map, $width);
 
-        var_dump($planePositionX, $planePositionY);
-        var_dump($waterPositionX, $waterPositionY);
-        var_dump($firePositionX, $firePositionY);
+        $moves = [];
+        $wpx = $waterPositionX - $planePositionX;
+        if ($wpx != 0) {
+            for ($i = 0; $i < abs($wpx); $i++) {
+                if ($wpx < 0) {
+                    $moves[] = ['dx' => -1, 'dy' => 0];
+                } else {
+                    $moves[] = ['dx' => 1, 'dy' => 0];
+                }
+
+            }
+        }
+        dd($moves);
+
 
         dd(request()->all());
     }
