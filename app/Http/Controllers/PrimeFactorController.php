@@ -58,9 +58,15 @@ class PrimeFactorController extends Controller
 
     private function calcPrimes($number){
         $original_number = $number;
+        $roman = false;
 
         if (!is_numeric($number)) {
-            return ['number' => $number, "error" => "not a number"];
+            $number = $this->numberFromRoman($number);
+            if( $number > 0 && $number < 400 ){
+                $roman = true;
+            }else{
+                return ['number' => $number, "error" => "not a number"];
+            }
         }
 
         if ($number>1000000) {
@@ -77,10 +83,66 @@ class PrimeFactorController extends Controller
         {
             for (; $number % $candidate == 0; $number /= $candidate)
             {
-                $decomposition[] = $candidate;
+                $decomposition[] = ($roman == true)?$this->integerToRoman($candidate):$candidate;
             }
         }
 
         return ['number' => $original_number, "decomposition" => $decomposition];
+    }
+
+    private function numberFromRoman($roman){
+        $romans = array(
+            'M' => 1000,
+            'CM' => 900,
+            'D' => 500,
+            'CD' => 400,
+            'C' => 100,
+            'XC' => 90,
+            'L' => 50,
+            'XL' => 40,
+            'X' => 10,
+            'IX' => 9,
+            'V' => 5,
+            'IV' => 4,
+            'I' => 1,
+        );
+
+        $result = 0;
+
+        foreach ($romans as $key => $value) {
+            while (strpos($roman, $key) === 0) {
+                $result += $value;
+                $roman = substr($roman, strlen($key));
+            }
+        }
+        return $result;
+    }
+
+    function integerToRoman($integer)
+    {
+        $integer = intval($integer);
+        $result = '';
+
+        $lookup = array('M' => 1000,
+        'CM' => 900,
+        'D' => 500,
+        'CD' => 400,
+        'C' => 100,
+        'XC' => 90,
+        'L' => 50,
+        'XL' => 40,
+        'X' => 10,
+        'IX' => 9,
+        'V' => 5,
+        'IV' => 4,
+        'I' => 1);
+
+        foreach($lookup as $roman => $value){
+            $matches = intval($integer/$value);
+            $result .= str_repeat($roman,$matches);
+            $integer = $integer % $value;
+        }
+
+        return $result;
     }
 }
