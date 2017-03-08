@@ -15,6 +15,15 @@
     <div class="flex-center position-ref full-height">
         <div class="content">
             <div id="minesweeper-board" class="">
+                @for ($row = 0; $row < count($mineMatrix); $row++)
+               <div class="container" id="row-{{ $row+1 }}">
+                   @for ($col = 0; $col < count($mineMatrix[$row]); $col++)
+                   <div class="col-md-1 mine" id="cell-{{ $row + 1 }}x{{ $col + 1 }}"
+                       data-id = "[{{ $row }}][{{ $col }}]"
+                       data-value="{{ $mineMatrix[$row][$col] }}"></div>
+                   @endfor
+               </div>
+               @endfor
             </div>
         </div>
     </div>
