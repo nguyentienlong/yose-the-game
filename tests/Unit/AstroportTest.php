@@ -48,10 +48,16 @@ class AstroportTest extends TestCase
     public function testAstroportFeedback() {
         $response = $this->get('/astroport');
         $gate1 = $this->findElementById($response, 'gate-1');
+        $gate2 = $this->findElementById($response, 'gate-2');
+        $gate3 = $this->findElementById($response, 'gate-3');
         $info = $this->findElementById($response, 'info');
         $this->assertNotNull($gate1);
+        $this->assertNotNull($gate2);
+        $this->assertNotNull($gate3);
         $this->assertNotNull($info);
         $this->assertContains('free', $gate1->getAttribute('class'));
+        $this->assertContains('free', $gate2->getAttribute('class'));
+        $this->assertContains('free', $gate3->getAttribute('class'));
         $this->assertContains('hidden', $info->getAttribute('class'));
         ///////////////////////////////////////////
         $response = $this->post('/astroport?shipName=titanic');
