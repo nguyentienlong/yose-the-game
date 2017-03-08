@@ -48,11 +48,12 @@
             var item = $(this).attr('data-value');
 
             if (item == '1') {
-                $(this).css('background-color', '#51e1f7');
+                $(this).css('background-color', 'red');
+                $(this).addClass('lost');
             }
         })
 
-        var load = function () {
+        function load() {
             $.ajax({
                 method: 'GET',
                 url: "{{ url('/minesweeper/load') }}"
