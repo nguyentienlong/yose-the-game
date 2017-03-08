@@ -47,9 +47,10 @@
         $(document).on('click', '.mine' , function () {
             var item = $(this).attr('data-value');
 
+            $(this).addClass('lost');
+
             if (item == '1') {
                 $(this).css('background-color', 'red');
-                $(this).addClass('lost');
             }
         })
 
