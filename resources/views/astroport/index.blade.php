@@ -19,7 +19,7 @@
             </form>
 
             <div class="links">
-                <div id="gate-1">
+                <div id="gate-1" class="free {{ isset($data['shipName']) ? $data['shipName'] : 'occupied' }}">
                     <div id="ship-1">{{ isset($data['shipName']) ? $data['shipName'] : 'Ship 1' }}</div>
                 </div>
                 <div id="gate-2">
@@ -28,6 +28,12 @@
                 <div id="gate-3">
                     <div id="ship-3">Ship 3</div>
                 </div>
+            </div>
+
+            <hr/>
+            <h3>Info</h3>
+            <div id="info" class="hidden this-is-info">
+
             </div>
         </div>
     </div>
