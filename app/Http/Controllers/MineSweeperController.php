@@ -13,7 +13,9 @@ class MineSweeperController extends Controller
      */
     public function index(Request $request)
     {
-        return view('minesweeper/index');
+        $mineMatrix = $this->generateMatrix();
+
+        return view('minesweeper/index', compact('mineMatrix'));
     }
 
     /**
@@ -22,6 +24,17 @@ class MineSweeperController extends Controller
      * @return JsonResponse
      */
     public function load(Request $request)
+    {
+        $mineMatrix = $this->generateMatrix();
+
+        return new JsonResponse($mineMatrix);
+    }
+
+    /**
+     * generate mine matrix
+     *
+     */
+    protected function generateMatrix()
     {
         $mineMatrix = [];
 
@@ -33,6 +46,6 @@ class MineSweeperController extends Controller
             }
         }
 
-        return new JsonResponse($mineMatrix);
+        return $mineMatrix;
     }
 }
