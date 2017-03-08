@@ -27,7 +27,7 @@
             </script>
 
             <div class="links">
-                <div id="gate-1" class="free {{ $data['occupied'] ? '' : 'occupied' }}">
+                <div id="gate-1" class="{{ $data['occupied'] ? 'occupied' : 'free' }}">
                     <div id="ship-1">{{ isset($data['shipName']) ? $data['shipName'] : 'Ship 1' }}</div>
                 </div>
                 <div id="gate-2">
