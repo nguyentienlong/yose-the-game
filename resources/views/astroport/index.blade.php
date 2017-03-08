@@ -40,7 +40,7 @@
 
             <hr/>
             <h3>Info</h3>
-            <div id="info" class="{{ $data['occupied'] ? '' : 'hidden' }}">
+            <div id="info" class="{{ $data['occupied'] ? 'visible' : 'hidden' }}">
                 First ship is docked
             </div>
         </div>
